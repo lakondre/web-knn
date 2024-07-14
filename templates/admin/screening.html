@@ -1,0 +1,153 @@
+
+<!DOCTYPE htaml>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Halaman Screening</title>
+         <!-- basic -->
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <!-- mobile metas -->
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+         <!-- site metas -->
+         <meta name="keywords" content="Halaman Screening">
+         <meta name="description" content="Screening sistem">
+         <meta name="author" content="Andreas Adha Maulana">
+         <!-- bootstrap css -->
+         <link rel="stylesheet" type="text/css" href="../static/assets/css/bootstrap.min.css">
+         <!-- style css -->
+         <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
+         <link rel="stylesheet" type="text/css" href="../static/assets/css/table.css">
+         <!-- Responsive-->
+         <link rel="stylesheet" href="../static/assets/css/responsive.css">
+         <!-- fevicon -->
+         <link rel="icon" href="../static/assets/images/fevicon.png" type="image/gif" />
+         <!-- font css -->
+         <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,600,700|Poppins:400,600,700&display=swap" rel="stylesheet">
+         <!-- Scrollbar Custom CSS -->
+         <link rel="stylesheet" href="../static/assets/css/jquery.mCustomScrollbar.min.css">
+         <!-- Tweaks for older IEs-->
+         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+                
+        <link rel="website icon" type="png" href="../static/assets/img/cropped-icon-RSAW-270x270.png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+       </head>
+     <body>
+        <div class="header_section">
+           <div class="container">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                 <a class="navbar-brand"href="{{ url_for('admin') }}"><img src="../static/assets/img/logo.png"></a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('pengguna') }}">Data Pengguna</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('pasien') }}">Data Pasien</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('riwayat') }}">Data Riwayat</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link active" href="{{ url_for('classification') }}">Screening Sistem</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                       </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                    </form>
+                 </div>
+              </nav>
+           </div>
+        </div>
+        
+        <div class="body">
+            <div class="card-deck">
+                <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pilih Foto Mata tekan tombol dibawah</h5>
+                                    <form action="/upload" method="post" enctype="multipart/form-data">
+                                        <label for="id_pasien">Nama Pasien:</label>
+                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan Nama Pasien">
+                                        <p></p>
+                                        <input type="file" name="file">
+                                        <button type="submit" class="btn btn-warning">Deteksi</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Hasil Deteksi</h5>
+                                    {% if result %}
+                                        <p class="card-text"><h2>Classification Result: {{ result }}</h2></p>
+                                        <p style="align-items: center;"><img src="{{ image_url }}" alt="Uploaded Image" style="max-width: 400px; min-width: 250px;"></p>
+                                        <p>Pasien: {{ nama_pasien }} (ID: {{ id_pasien }})</p>
+                                        <p>Alamat: {{ alamat }}</p>
+                                        <p>No. HP: {{ nohp }}</p>
+                                        <p>Tanggal Lahir: {{ tlahir }}</p>
+                                        <p><button type="cancel" class="btn btn-warning"><a href="{{ url_for('classification') }}">Reset</a></button></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Data Pasien</h5>
+                                    <form method="POST" action="/save_riwayat">
+                                        <div class="form-group">
+                                            <label for="nama_pasien">ID Pasien:</label>
+                                            <input type="text" id="id_pasien" name="id_pasien" value="{{ id_pasien }}" class="form-control" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nama_pasien">Nama Pasien:</label>
+                                            <input type="text" id="nama_pasien" name="nama_pasien" value="{{ nama_pasien }}" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nama_pasien">Alamat:</label>
+                                            <input type="text" id="alamat" name="alamat" value="{{ alamat }}" class="form-control" readonly>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="nama_pasien">Nomor Handphone:</label>
+                                            <input type="text" id="nohp" name="nohp" value="{{ nohp }}" class="form-control" readonly>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="nama_pasien">Tanggal Lahir:</label>
+                                            <input type="date" id="tlahir" name="tlahir" value="{{ tlahir }}" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="tanggal_screening">Tanggal Screening:</label>
+                                            <input type="date" id="tscreen" name="tscreen" value="{{ current_date }}" class="form-control" required readonly>
+                                        </div>
+            
+                                        <div class="form-group">
+                                            <label for="hasil_diagnosa">Hasil Diagnosa:</label>
+                                            <input type="text" name="diagnosis" value="{{ result }}" class="form-control" required readonly>
+                                        </div>
+            
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </body>
+            </html>

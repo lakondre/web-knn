@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Edit User</title>
+</head>
+<body>
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        Edit Riwayat
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('edit_riwayat2', id_riwayat=riwayat.id_riwayat) }}">
+                            <div class="form-group">
+                                <label>ID Pasien:</label>
+                                <input type="text" name="id_pasien" value="{{ riwayat.id_pasien }}"  class="form-control" readonly>
+                            </div>
+
+                        <div class="form-group">
+                            <label>Nama:</label>
+                            <input type="text" name="nama" value="{{ riwayat.nama }}"  class="form-control" readonly>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>No HP:</label>
+                            <input type="text" name="nohp" value="{{ riwayat.nohp }}" placeholder="Masukkan Nomor Handphone" class="form-control" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tlahir">Tanggal Lahir:</label>
+                            <input type="date" name="tlahir" value="{{ riwayat.tlahir }}" class="form-control" required readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tlahir">Tanggal Screening:</label>
+                            <input type="date" name="tscreen" value="{{ riwayat.tscreen }}" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Level</label>
+                            <select name="diagnosa" id="diagnosa" class="form-control" aria-label="Default select example">
+                            <option selected value="{{ riwayat.diagnosa }}">{{ riwayat.diagnosa }}</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Cataract">Cataract</option>
+                            </select>
+                        </div>
+
+                            <button type="submit" class="btn btn-success">Save Changes</button>
+                            <button type="cancel" class="btn btn-warning"><a href="{{ url_for('riwayat2') }}">Cancel</a></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Pasien</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" style="margin-top: 80px">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        Edit Pasien
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('editpasien', id_pasien=pasien.id_pasien) }}">
+                            <div class="form-group">
+                                <label for="nama">Nama:</label>
+                                <input type="text" name="nama" value="{{ pasien.nama }}" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="alamat">Alamat:</label>
+                                <textarea class="form-control" name="alamat" required>{{ pasien.alamat }}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nohp">No HP:</label>
+                                <input type="text" name="nohp" value="{{ pasien.nohp }}" maxlength="13" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tlahir">Tanggal Lahir:</label>
+                                <input type="date" name="tlahir" value="{{ pasien.tlahir }}" class="form-control" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Save Changes</button>
+                            <a href="{{ url_for('pasien') }}" class="btn btn-warning">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

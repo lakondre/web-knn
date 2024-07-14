@@ -1,0 +1,36 @@
+.colorBox {
+    width: 100px;
+    height: 1.25rem;
+    display: inline-flex;
+    margin-left: 5px;
+    border: 2px solid black;
+}
+
+.answer {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    cursor: crosshair;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: rgb(0, 0, 0);
+    background-repeat: no-repeat;
+    background: #fffef9;
+    background-image: url("warna.jpg");
+    background-size: 1450px 900px;
+    
+    /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to bottom, #19e5f0, #2f2fff);
+    /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to bottom, #19e5f0, #2f2fff);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

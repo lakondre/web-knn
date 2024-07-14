@@ -1,0 +1,121 @@
+
+<!DOCTYPE htaml>
+<html lang="en">
+   <head>
+   <meta charset="UTF-8">
+   <title>Dashboard Operator</title>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/assets/css/table.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="../static/assets/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="../static/assets/images/fevicon.png" type="image/gif" />
+    <!-- font css -->
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2:400,600,700|Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="../static/assets/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+           
+   <link rel="website icon" type="png" href="../static/assets/img/cropped-icon-RSAW-270x270.png">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <style>
+      .card {
+            margin-top: 100px;
+            background-color: #008fd7;
+         }
+         .iconnn{
+            max-width: 75px;
+            margin-right: 25px;
+            margin-left: auto;
+            border-image: fill;
+         }
+         .card-text{
+            font-size: 75px;
+            font-family: "Red Hat Display", Sans-serif;
+            color: #fff;
+         }
+         .card-title{
+            text-align: center;
+            font-size: 45px;
+            font-family: "Red Hat Display", Sans-serif;
+            color: #fff;
+         }
+         .card-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+         }
+      
+</style>
+     <body>
+        <div class="header_section">
+           <div class="container">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                 <a class="navbar-brand"href="{{ url_for('operator') }}" style="background-color: #ffffff; padding: 5px;"><img src="../static/assets/img/logo.png"></a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                       
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('pasien1') }}">Data Pasien</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('riwayat1') }}">Data Riwayat</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('classification1') }}">Screening Sistem</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                       </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                    </form>
+                 </div>
+              </nav>
+           </div>
+        </div>
+        <main>
+         <div class="container">
+           <div class="row">
+            <div class="welcome-text">
+              </div>
+             <div class="col-md-3">
+               <div class="card">
+                 <div class="card-body">
+                   <h5 class="card-title">Pasien</h5>
+                   <p class="card-text"><img class="iconnn" src="../static/images/patient.png">{{ patients }}</p>
+                 </div>
+               </div>
+             </div>
+             <div class="col-md-3">
+               <div class="card">
+                 <div class="card-body">
+                   <h5 class="card-title">Riwayat</h5>
+                   <p class="card-text"><img class="iconnn" src="../static/images/report.png">{{ riwayat_count }}</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </main>
+     </body>
+</html>
